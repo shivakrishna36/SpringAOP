@@ -33,6 +33,12 @@ public class ValidationAspect {
 	public Object log2(ProceedingJoinPoint pjp) throws Throwable
 	{
 		logger.info("Before the method:");
+		logger.info("This method will be called:"+pjp.getSignature());
+		logger.info("The parameters are:");
+		Object[] params = pjp.getArgs();
+		for (int i = 0; i < params.length; i++) {
+			logger.info("argument at"+i+"is"+params[i]);
+		}
 		Object value = pjp.proceed();
 		logger.info("After the method:");
 		return value;
